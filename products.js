@@ -1,6 +1,6 @@
 // ====== STORE SETTINGS — EDIT THESE ======
-const WHATSAPP_NUMBER = "2340000000000"; // country code + number, no "+" or spaces
-const INSTAGRAM_URL   = "https://instagram.com/yourhandle";
+const WHATSAPP_NUMBER = "+2348135542890"; // country code + number, no "+" or spaces
+const INSTAGRAM_URL   = "https://www.instagram.com/ledde_manga?srtk=NGdoZXYwOTBjdm5r";
 const CURRENCY        = "₦";
 
 // ====== PRODUCTS — EDIT / ADD / REMOVE ======
