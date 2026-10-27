@@ -1,48 +1,31 @@
 (function () {
   const $ = (s) => document.querySelector(s);
 
-  // ---- Safety check: shows a message if products.js did not load ----
-  if (typeof PRODUCTS === "undefined" || typeof WHATSAPP_NUMBER === "undefined") {
-    $("#productGrid").innerHTML =
-      '<p style="grid-column:1/-1">Products failed to load. Check that products.js is in the same folder as index.html, named exactly products.js (lowercase), and has no typos.</p>';
-    throw new Error("products.js did not load");
-  }
+  // ====== SETTINGS ======
+  const WHATSAPP_NUMBER = "2348135542890";
+  const CURRENCY = "₦";
 
   const fmt = (n) => CURRENCY + Number(n).toLocaleString();
+
+  // ---- Read the products straight from the cards in index.html ----
+  const PRODUCTS = Array.from(document.querySelectorAll(".card")).map((c) => ({
+    id: Number(c.dataset.id),
+    name: c.dataset.name,
+    price: Number(c.dataset.price),
+    image: c.dataset.img || ""
+  }));
+
+  const byId = (id) => PRODUCTS.find((p) => p.id === Number(id));
 
   // ---- Cart state (saved in the browser) ----
   let cart = {};
   try { cart = JSON.parse(localStorage.getItem("lm_cart") || "{}"); } catch (e) { cart = {}; }
   const save = () => { try { localStorage.setItem("lm_cart", JSON.stringify(cart)); } catch (e) {} };
 
-  const byId = (id) => PRODUCTS.find((p) => p.id === Number(id));
-
-  // Remove anything in the saved cart that no longer exists in PRODUCTS
+  // Remove anything in the saved cart that no longer exists
   Object.keys(cart).forEach((id) => { if (!byId(id)) delete cart[id]; });
 
-  // ---- Social links ----
-  $("#igLink").href = INSTAGRAM_URL;
-  $("#waLink").href = "https://wa.me/" + WHATSAPP_NUMBER + "?text=Hello";
   $("#year").textContent = new Date().getFullYear();
-
-  // ---- Render products ----
-  function renderProducts() {
-    $("#productGrid").innerHTML = PRODUCTS.map((p) => `
-      <article class="card">
-        <div class="card-img">
-          ${p.image
-            ? `<img src="${p.image}" alt="${p.name}" loading="lazy" />`
-            : `<div class="ph">${p.name.charAt(0)}</div>`}
-        </div>
-        <div class="card-info">
-          <h3>${p.name}</h3>
-          <p>${p.desc}</p>
-          <div class="price">${fmt(p.price)}</div>
-        </div>
-        <button class="add" data-add="${p.id}">Add to cart</button>
-      </article>
-    `).join("");
-  }
 
   // ---- Render cart ----
   function renderCart() {
@@ -151,6 +134,5 @@
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeCart(); });
 
   // ---- Init ----
-  renderProducts();
   renderCart();
 })();
