@@ -1,5 +1,13 @@
 (function () {
   const $ = (s) => document.querySelector(s);
+
+  // ---- Safety check: shows a message if products.js did not load ----
+  if (typeof PRODUCTS === "undefined" || typeof WHATSAPP_NUMBER === "undefined") {
+    $("#productGrid").innerHTML =
+      '<p style="grid-column:1/-1">Products failed to load. Check that products.js is in the same folder as index.html, named exactly products.js (lowercase), and has no typos.</p>';
+    throw new Error("products.js did not load");
+  }
+
   const fmt = (n) => CURRENCY + Number(n).toLocaleString();
 
   // ---- Cart state (saved in the browser) ----
@@ -9,9 +17,12 @@
 
   const byId = (id) => PRODUCTS.find((p) => p.id === Number(id));
 
+  // Remove anything in the saved cart that no longer exists in PRODUCTS
+  Object.keys(cart).forEach((id) => { if (!byId(id)) delete cart[id]; });
+
   // ---- Social links ----
   $("#igLink").href = INSTAGRAM_URL;
-  $("#waLink").href = "https://wa.me/" + WHATSAPP_NUMBER;
+  $("#waLink").href = "https://wa.me/" + WHATSAPP_NUMBER + "?text=Hello";
   $("#year").textContent = new Date().getFullYear();
 
   // ---- Render products ----
