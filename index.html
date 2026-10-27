@@ -53,7 +53,70 @@
         <h2>The Drop</h2>
         <p>Pick your fave, add to cart, and we'll sort the rest on WhatsApp.</p>
       </div>
-      <div class="grid" id="productGrid"></div>
+
+      <div class="grid">
+
+        <article class="card" data-id="1" data-name="Natural Plant Deodorizer" data-price="4500" data-img="natural-plant-deodorizer.jpg">
+          <div class="card-img"><img src="natural-plant-deodorizer.jpg" alt="Natural Plant Deodorizer" loading="lazy" /></div>
+          <div class="card-info">
+            <h3>Natural Plant Deodorizer</h3>
+            <p>Great fragrance, big presence.</p>
+            <div class="price">₦4,500</div>
+          </div>
+          <button class="add" data-add="1">Add to cart</button>
+        </article>
+
+        <article class="card" data-id="2" data-name="Pearl Bottle" data-price="3500" data-img="pearl-bottle.jpg">
+          <div class="card-img"><img src="pearl-bottle.jpg" alt="Pearl Bottle" loading="lazy" /></div>
+          <div class="card-info">
+            <h3>Pearl Bottle</h3>
+            <p>Energising + Freshness.</p>
+            <div class="price">₦3,500</div>
+          </div>
+          <button class="add" data-add="2">Add to cart</button>
+        </article>
+
+        <article class="card" data-id="3" data-name="Silk Vanilla Deodorizer" data-price="4000" data-img="silk-vanilla-deodorizer.jpg">
+          <div class="card-img"><img src="silk-vanilla-deodorizer.jpg" alt="Silk Vanilla Deodorizer" loading="lazy" /></div>
+          <div class="card-info">
+            <h3>Silk Vanilla Deodorizer</h3>
+            <p>Soft, sleek, versatile.</p>
+            <div class="price">₦4,000</div>
+          </div>
+          <button class="add" data-add="3">Add to cart</button>
+        </article>
+
+        <article class="card" data-id="4" data-name="Rose Garden Perfume" data-price="4000" data-img="rose-garden-perfume.jpg">
+          <div class="card-img"><img src="rose-garden-perfume.jpg" alt="Rose Garden Perfume" loading="lazy" /></div>
+          <div class="card-info">
+            <h3>Rose Garden Perfume</h3>
+            <p>Roses are love and that's great.</p>
+            <div class="price">₦4,000</div>
+          </div>
+          <button class="add" data-add="4">Add to cart</button>
+        </article>
+
+        <article class="card" data-id="5" data-name="Gold-Tone Deodorizer" data-price="6000" data-img="gold-tone-deodorizer.jpg">
+          <div class="card-img"><img src="gold-tone-deodorizer.jpg" alt="Gold-Tone Deodorizer" loading="lazy" /></div>
+          <div class="card-info">
+            <h3>Gold-Tone Deodorizer</h3>
+            <p>Looks rich, costs less.</p>
+            <div class="price">₦6,000</div>
+          </div>
+          <button class="add" data-add="5">Add to cart</button>
+        </article>
+
+        <article class="card" data-id="6" data-name="Everyday Shirt" data-price="3000" data-img="everyday-shirt.jpg">
+          <div class="card-img"><img src="everyday-shirt.jpg" alt="Everyday Shirt" loading="lazy" /></div>
+          <div class="card-info">
+            <h3>Everyday Shirt</h3>
+            <p>Fits your whole life.</p>
+            <div class="price">₦3,000</div>
+          </div>
+          <button class="add" data-add="6">Add to cart</button>
+        </article>
+
+      </div>
     </section>
 
     <!-- HOW IT WORKS -->
@@ -73,8 +136,8 @@
     <h3>LEDDE MANGA</h3>
     <p>Affordable luxury, always.</p>
     <div class="links">
-      <a id="igLink" href="https://www.instagram.com/ledde_manga" target="_blank" rel="noopener">Instagram</a>
-      <a id="waLink" href="https://wa.me/2348135542890?text=Hello" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://www.instagram.com/ledde_manga" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://wa.me/2348135542890?text=Hello" target="_blank" rel="noopener">WhatsApp</a>
     </div>
     <small>© <span id="year"></span> Ledde Manga. All rights reserved.</small>
   </footer>
@@ -88,7 +151,7 @@
     </div>
     <div class="drawer-body" id="cartItems"></div>
     <div class="drawer-foot">
-      <div class="total"><span>Total</span><strong id="cartTotal">0</strong></div>
+      <div class="total"><span>Total</span><strong id="cartTotal">₦0</strong></div>
       <button class="btn btn-full" id="checkoutBtn">Checkout on WhatsApp</button>
       <button class="clear" id="clearCart">Clear cart</button>
     </div>
@@ -96,7 +159,6 @@
 
   <div class="toast" id="toast">Added to cart ✦</div>
 
-  <script src="products.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
